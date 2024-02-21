@@ -1,11 +1,11 @@
 const express = require('express');
 const app = express();
 const port = 3000;
-
 const { MongoClient } = require("mongodb");
 require("dotenv").config();
 
-app.use(express.json());
+// Importing route handlers
+const routes = require('./routes'); // Assuming your routes are defined in a file named routes.js
 
 // MongoDB connection URL
 const uri = process.env.mongoURi;
@@ -13,6 +13,11 @@ const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+
+app.use(express.json());
+
+// Use routes
+app.use('/', routes);
 
 app.get("/", async (req, res) => {
   try {
