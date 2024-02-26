@@ -1,15 +1,15 @@
+// App.js
 import React from 'react';
 import './App.css'; 
+import Data from './Components/Data';
 
-function HomePage() {
+function App() {
   return (
-    <div className='Homepage'>
-      
-        <h1 className='wel' >Welcome to CreamyDelights</h1>
-        <button className="login-button">Login</button> 
-      
+    <div>
+       <h1 className='welcome'>Welcome to CreamyDelights</h1>
+      <Data />
     </div>
   );
 }
 
-export default HomePage;
+export default App;
