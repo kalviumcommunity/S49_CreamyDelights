@@ -2,77 +2,53 @@ const express = require('express');
 const app = express();
 const port = 8000;
 const cors = require('cors');
-const { MongoClient } = require("mongodb");
+const mongoose = require('mongoose');
 const routes = require('./routes');
-const icecreamModel = require('./models/Icecream.js')
+const icecreamModel = require('./models/Icecream.js');
+const userModel = require('./models/Users.js'); // Change the import name
 require("dotenv").config();
 const uri = process.env.mongoURi;
-const mongoose = require('mongoose')
 
+app.use(cors());
+app.use(express.json());
 
-// Importing route handlers
- // Assuming your routes are defined in a file named routes.js
-
-// MongoDB connection URL
-
-const client = new MongoClient(uri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
-app.use(cors())
-app.use(express.json())
-
-mongoose.connect(uri,{
+mongoose.connect(uri, {
   useNewUrlParser:true,
   useUnifiedTopology:true
 })
- 
-
-// app.use(express.json());
+.then(() => {
+  console.log('MongoDB connected successfully');
+})
+.catch(err => {
+  console.error('MongoDB connection error:', err);
+});
 
 // Use routes
 app.use('/', routes);
 
-// app.get("/flavours", async (req, res) => {
-//   try {
-//     // Connect to the MongoDB database
-//     await client.connect(uri);
-
-//     // Check if the connection is successful
-//     if (client.topology.isConnected()) {
-//       res.json({ message: "pong", database_status: "Connected" });
-//       console.log("yes");
-//     } else {
-//       res.json({ message: "pong", database_status: "Disconnected" });
-//       console.log("no");
-//     }
-//   } catch (error) {
-//     console.error("Error connecting to the database:", error);
-//     res.status(500).json({ error: "Internal Server Error" });
-//   }
-// });
-
-// // define the ping route
-// app.get('/ping',(req,res)=>{
-//   res.send('pong');
-// });
-
-
-
-
-app.get('/getIcecream',(req,res)=>{
+app.get('/getIcecream', (req, res) => {
   icecreamModel.find()
-  .then(icecream => res.json(icecream))
-  .catch(err => res.json(err))
-})
+    .then(icecream => res.json(icecream))
+    .catch(err => res.json(err))
+});
 
+app.post('/postUserData', (req, res) => { // Change to app.post for handling POST request
+  let userData = req.body; // No need to wrap req.body in an object
+  userModel.create(userData)
+    .then(user => res.json(user))
+    .catch(err => res.json(err))
+});
+
+app.get('/getUserData', (req, res) => {
+  userModel.find()
+    .then(users => res.json(users))
+    .catch(err => res.json(err))
+});
 
 if (require.main === module) {
   app.listen(port, () => {
-    console.log(`🚀 server running on PORT: ${port}`);
+    console.log(`🚀 Server running on PORT: ${port}`);
   });
 }
-
 
 module.exports = app;
