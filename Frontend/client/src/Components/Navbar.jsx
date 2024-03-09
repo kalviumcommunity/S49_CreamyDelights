@@ -1,9 +1,9 @@
-// Navbar.js
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Import Link from React Router
 import './Navbar.css'; // Import CSS file for styling
 import Modal from './Profile.jsx'; // Import Modal component
 
-function Navbar() {
+function Navbar({ cartItems, favoriteItems, removeFromCart }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Function to toggle modal state
@@ -15,18 +15,29 @@ function Navbar() {
     <nav className="navbar">
       <div className="container">
         <div className="logo">CreamyDelights</div>
-       
         <div className="icons">
-          <img
-            src="https://cdn-icons-png.flaticon.com/128/4207/4207539.png"
-            alt="Heart_icon"
-            className="icon"
-          />
-          <img
-            src="https://cdn-icons-png.flaticon.com/128/2698/2698507.png"
-            alt="Cart_icon"
-            className="icon"
-          />
+          {/* Link to Rate component */}
+          <Link to="/rate">
+            <img
+              src="https://cdn-icons-png.flaticon.com/128/477/477406.png"
+              alt="rate_icon"
+              className="icon"
+            />
+          </Link>
+          {/* Button to add to Favorites */}
+          <button onClick={() => addToFavorites(item)}>
+            <img
+              src="https://cdn-icons-png.flaticon.com/128/4207/4207539.png"
+              alt="fav_image"
+            />
+          </button>
+          {/* Button to add to Cart */}
+          <button onClick={() => addToCart(item)}>
+            <img
+              src="https://cdn-icons-png.flaticon.com/128/2698/2698507.png"
+              alt="cart_image"
+            />
+          </button>
           <img
             src="https://cdn-icons-png.flaticon.com/128/7381/7381253.png"
             alt="Profile_icon"
@@ -35,6 +46,7 @@ function Navbar() {
           />
         </div>
       </div>
+      -
       {/* Render modal if isModalOpen is true */}
       {isModalOpen && <Modal closeModal={toggleModal} />}
     </nav>
