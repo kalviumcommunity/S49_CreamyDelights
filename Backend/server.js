@@ -33,7 +33,7 @@ app.get('/getIcecream', (req, res) => {
 });
 
 app.post('/postUserData', (req, res) => { // Change to app.post for handling POST request
-  let userData = req.body; // No need to wrap req.body in an object
+  let userData = req.body; 
   userModel.create(userData)
     .then(user => res.json(user))
     .catch(err => res.json(err))
@@ -44,6 +44,35 @@ app.get('/getUserData', (req, res) => {
     .then(users => res.json(users))
     .catch(err => res.json(err))
 });
+
+app.delete("/deleteUser/:id",async(req,res)=>{
+  const id = req.params.id
+  userModel.findByIdAndDelete({_id:id}).then(i=>res.json(i))
+})
+
+app.put("/updateUser/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const updateInfo = req.body;
+
+    const updatedUser = await userModel.findByIdAndUpdate(id, updateInfo);
+
+    if (!updatedUser) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    res.json({ updatedUser, Message: "Done" });
+  } catch (error) {
+    console.error("Error updating user:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+
+
+app.get("/",async(req,res)=>{
+  res.json({Message:"Connected"})
+})
 
 if (require.main === module) {
   app.listen(port, () => {

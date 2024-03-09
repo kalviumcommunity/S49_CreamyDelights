@@ -1,45 +1,56 @@
-/* body{
-  background-color: #be7ec0;
-} */
+/* Set background color for the whole body */
+body {
+  background-color: #fce8fc; /* Soft pink */
+  font-family: Arial, sans-serif; /* Use a common font family */
+}
 
+/* Style for the card container */
 .card-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; 
+  height: 100vh;
 }
 
+/* Style for individual cards */
 .card {
-  width: 300px; 
+  width: 300px;
   padding: 20px;
   margin: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 2px solid #f7a8c1; /* Light pink border */
+  border-radius: 15px;
   text-align: center;
+  background-color: #fff; /* White background */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
 }
 
+/* Style for the welcome heading */
 .welcome {
   text-align: center;
-  color: #333; 
-  font-size: 4em;
+  color: #be7ec0; /* Dark pink */
+  font-size: 3em; /* Slightly smaller font size */
   margin-bottom: 20px;
 }
 
+/* Style for the main content section */
 .main {
-  background-color: #f4f4f4; 
-  border-radius: 8px;
+  background-color: #fff; /* White background */
+  border-radius: 15px;
   padding: 20px;
   margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
 }
 
+/* Style for headings */
 h2 {
-  color: #be7ec0; 
-  font-size: 22px;
+  color: #be7ec0; /* Dark pink */
+  font-size: 24px; /* Larger font size */
   margin-bottom: 10px;
 }
 
+/* Style for paragraphs and subheadings */
 p, h4 {
-  color: #666;
+  color: #666; /* Dark gray */
 }
 
 h4 {
@@ -47,11 +58,41 @@ h4 {
   margin-top: 5px;
 }
 
+/* Additional styles for specific elements */
 .data {
-  margin-left: 550px;
-  margin-top: 10%;
+  margin-left: auto; /* Align to the right */
+  margin-right: auto; /* Align to the center horizontally */
+  margin-top: 50px; /* Add space from the top */
+  max-width: 800px; /* Limit the maximum width */
 }
-.video-container{
-  margin-left: 30%;
-  margin-top: 5%;
+
+.video-container {
+  text-align: center; /* Center align the content */
+  margin-top: 50px; /* Add space from the top */
+}
+
+/* Hover effect for cards */
+.card:hover {
+  transform: translateY(-5px); /* Move card up slightly on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+/* App.css */
+
+/* Style for buttons */
+button {
+  background-color: transparent; /* Transparent background */
+  border: none; /* Remove border */
+  cursor: pointer; /* Add pointer cursor */
+  margin-right: 10px; /* Add space between buttons */
+}
+
+/* Style for button images */
+button img {
+  width: 30px; /* Adjust image size */
+  height: 30px;
+}
+
+/* Hover effect for buttons */
+button:hover img {
+  transform: scale(1.1); /* Increase image size on hover */
 }
