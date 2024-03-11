@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Navbar from './Components/Navbar';
-import FavoritesPage from './Components/FavoriteItems';
-import CartPage from './Components/Cart';
-import Rate from './Components/Rate'; // Import the Rate component
+import FavoriteItems from './Components/FavoriteItems';
+import Cart from './Components/Cart'; 
+import Rate from './Components/Rate'; 
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import HomePage from './HomePage'; // Import the HomePage component
+import HomePage from './HomePage';
 
 function App() {
   const [data, setData] = useState([]);
@@ -61,10 +61,10 @@ function App() {
             </div>
           </Route>
           <Route path="/favorites">
-            <FavoritesPage favoriteItems={favoriteItems} />
+            <FavoriteItems favoriteItems={favoriteItems} />
           </Route>
           <Route path="/cart">
-            <CartPage cartItems={cartItems} />
+            <Cart cartItems={cartItems} /> {/* Assuming you have a Cart component */}
           </Route>
           {/* Route for Rate component */}
           <Route path="/rate">
