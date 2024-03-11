@@ -11,6 +11,18 @@ function Navbar({ cartItems, favoriteItems, removeFromCart }) {
     setIsModalOpen(!isModalOpen);
   };
 
+  // Function to add item to favorites
+  const addToFavorites = (item) => {
+    // Add your logic to add item to favorites
+    console.log('Adding to favorites:', item);
+  };
+
+  // Function to add item to cart
+  const addToCart = (item) => {
+    // Add your logic to add item to cart
+    console.log('Adding to cart:', item);
+  };
+ 
   return (
     <nav className="navbar">
       <div className="container">
@@ -42,7 +54,7 @@ function Navbar({ cartItems, favoriteItems, removeFromCart }) {
             src="https://cdn-icons-png.flaticon.com/128/7381/7381253.png"
             alt="Profile_icon"
             className="icon"
-            onClick={toggleModal} // Open modal on click
+            onClick={toggleModal} 
           />
         </div>
       </div>

@@ -9,7 +9,6 @@ function HomePage() {
       <div className="video-container">
         <video width="780" height="450" autoPlay muted loop>
           <source src={vanillaIceCreamVideo} type="video/mp4" />
-          Your browser does not support the video tag.
         </video>
       </div>
     </div>
