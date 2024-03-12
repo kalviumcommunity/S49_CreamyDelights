@@ -35,13 +35,14 @@ app.get('/getIcecream', (req, res) => {
 app.post('/postUserData', (req, res) => { // Change to app.post for handling POST request
   let userData = req.body; 
   userModel.create(userData)
-    .then(user => res.json(user))
+    .then(user => {res.json(user),console.log(user)})
     .catch(err => res.json(err))
 });
 
 app.get('/getUserData', (req, res) => {
   userModel.find()
-    .then(users => res.json(users))
+    .then(users => {res.json(users),
+    console.log(users)})
     .catch(err => res.json(err))
 });
 
