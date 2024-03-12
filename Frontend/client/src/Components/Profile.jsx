@@ -2,6 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Profile.css';
 import Joi from 'joi';
+import Cookie from "js-cookie"
+
+const schema = Joi.object({
+  name: Joi.string().required().label('Name'),
+  email: Joi.string().required().label('Email'),
+  password: Joi.string().min(6).required().label('Password'),
+});
 
 function Profile({ closeModal }) {
   const [formData, setFormData] = useState({ name: '', email: '', password: '' });
@@ -9,8 +16,6 @@ function Profile({ closeModal }) {
   const [users, setUsers] = useState([]);
   const [editingUser, setEditingUser] = useState(null);
 
-
-  
   useEffect(() => {
     fetchUserData();
   }, []);
@@ -47,12 +52,14 @@ function Profile({ closeModal }) {
           await fetchUserData();
           setFormData({ name: '', email: '', password: '' });
           setEditingUser(null);
+          console.log(formData);
         } else {
           await axios.post('http://localhost:8000/postUserData', formData);
           alert('User profile saved successfully!');
           closeModal();
           await fetchUserData();
           setFormData({ name: '', email: '', password: '' });
+          Cookie.set("Username",formData.name)
         }
       }
     } catch (error) {
