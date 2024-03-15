@@ -54,12 +54,13 @@ function Profile({ closeModal }) {
           setEditingUser(null);
           console.log(formData);
         } else {
-          await axios.post('http://localhost:8000/postUserData', formData);
+          const response= await axios.post('http://localhost:8000/postUserData', formData);
           alert('User profile saved successfully!');
           closeModal();
           await fetchUserData();
           setFormData({ name: '', email: '', password: '' });
           Cookie.set("Username",formData.name)
+          Cookie.set("Token",response.data.token)
         }
       }
     } catch (error) {

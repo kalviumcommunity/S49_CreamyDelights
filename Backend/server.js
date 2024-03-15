@@ -6,8 +6,14 @@ const mongoose = require('mongoose');
 const routes = require('./routes');
 const icecreamModel = require('./models/Icecream.js');
 const userModel = require('./models/Users.js'); // Change the import name
+const { required } = require('joi');
 require("dotenv").config();
 const uri = process.env.mongoURi;
+const jwt = require('jsonwebtoken');
+
+const Key=process.env.secretKey;
+
+
 
 app.use(cors());
 app.use(express.json());
@@ -31,18 +37,20 @@ app.get('/getIcecream', (req, res) => {
     .then(icecream => res.json(icecream))
     .catch(err => res.json(err))
 });
-
-app.post('/postUserData', (req, res) => { // Change to app.post for handling POST request
+app.post('/postUserData', (req, res) => { 
   let userData = req.body; 
   userModel.create(userData)
-    .then(user => {res.json(user),console.log(user)})
-    .catch(err => res.json(err))
+    .then(user => {
+      const token = jwt.sign({ userId: user._id, username: user.name }, Key, { expiresIn: '1h' });
+      res.cookie("token", token);
+      res.json({ message: "Signed up Successfully", token });
+    })
+    .catch(err => res.json(err));
 });
 
 app.get('/getUserData', (req, res) => {
   userModel.find()
-    .then(users => {res.json(users),
-    console.log(users)})
+    .then(users => res.json(users))
     .catch(err => res.json(err))
 });
 
