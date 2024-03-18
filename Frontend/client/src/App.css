@@ -1,10 +1,8 @@
-/* Set background color for the whole body */
 body {
-  background-color: #fce8fc; /* Soft pink */
-  font-family: Arial, sans-serif; /* Use a common font family */
+  background-color: #fce8fc; 
+  font-family: Arial, sans-serif; 
 }
 
-/* Style for the card container */
 .card-container {
   display: flex;
   justify-content: center;
@@ -12,45 +10,40 @@ body {
   height: 100vh;
 }
 
-/* Style for individual cards */
 .card {
   width: 300px;
   padding: 20px;
   margin: 10px;
-  border: 2px solid #f7a8c1; /* Light pink border */
+  border: 2px solid #f7a8c1; 
   border-radius: 15px;
   text-align: center;
-  background-color: #fff; /* White background */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
-/* Style for the welcome heading */
 .welcome {
   text-align: center;
-  color: #be7ec0; /* Dark pink */
-  font-size: 3em; /* Slightly smaller font size */
+  color: #be7ec0; 
+  font-size: 3em; 
   margin-bottom: 20px;
 }
 
-/* Style for the main content section */
 .main {
-  background-color: #fff; /* White background */
+  background-color: #fff; 
   border-radius: 15px;
   padding: 20px;
   margin-bottom: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
-/* Style for headings */
 h2 {
-  color: #be7ec0; /* Dark pink */
-  font-size: 24px; /* Larger font size */
+  color: #be7ec0; 
+  font-size: 24px; 
   margin-bottom: 10px;
 }
 
-/* Style for paragraphs and subheadings */
 p, h4 {
-  color: #666; /* Dark gray */
+  color: #666;
 }
 
 h4 {
@@ -58,41 +51,44 @@ h4 {
   margin-top: 5px;
 }
 
-/* Additional styles for specific elements */
 .data {
-  margin-left: auto; /* Align to the right */
-  margin-right: auto; /* Align to the center horizontally */
-  margin-top: 50px; /* Add space from the top */
-  max-width: 800px; /* Limit the maximum width */
+  margin-left: auto; 
+  margin-right: auto; 
+  margin-top: 50px; 
+  max-width: 800px; 
 }
 
 .video-container {
-  text-align: center; /* Center align the content */
-  margin-top: 50px; /* Add space from the top */
+  text-align: center; 
+  margin-top: 50px;
 }
 
-/* Hover effect for cards */
 .card:hover {
-  transform: translateY(-5px); /* Move card up slightly on hover */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+  transform: translateY(-5px); 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
 }
-/* App.css */
 
-/* Style for buttons */
 button {
-  background-color: transparent; /* Transparent background */
-  border: none; /* Remove border */
-  cursor: pointer; /* Add pointer cursor */
-  margin-right: 10px; /* Add space between buttons */
+  background-color: transparent; 
+  border: none; 
+  cursor: pointer;
+  margin-right: 10px; 
 }
 
-/* Style for button images */
 button img {
-  width: 30px; /* Adjust image size */
+  width: 30px; 
   height: 30px;
 }
 
-/* Hover effect for buttons */
 button:hover img {
-  transform: scale(1.1); /* Increase image size on hover */
+  transform: scale(1.1); 
+}
+#username {
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer; 
+  width: 200px; 
 }

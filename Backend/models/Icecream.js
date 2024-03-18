@@ -3,8 +3,8 @@ const mongoose = require('mongoose')
 const icecreamSchema =  new mongoose.Schema({
     flavour : String,
     description: String,
-    imageurl: String 
-
+    imageurl: String,
+    username: String
     
 })
 

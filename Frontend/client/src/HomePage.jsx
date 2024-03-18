@@ -1,6 +1,6 @@
 import React from 'react';
-import vanillaIceCreamVideo from './assets/vanillaicecream.mp4'; // Import the video file
-import './HomePage.css'; // Import CSS file for styling
+import vanillaIceCreamVideo from './assets/vanillaicecream.mp4'; 
+import './HomePage.css'; 
 
 function HomePage() {
   return (

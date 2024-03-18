@@ -5,12 +5,11 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const routes = require('./routes');
 const icecreamModel = require('./models/Icecream.js');
-const userModel = require('./models/Users.js'); // Change the import name
+const userModel = require('./models/Users.js'); 
 const { required } = require('joi');
 require("dotenv").config();
 const uri = process.env.mongoURi;
 const jwt = require('jsonwebtoken');
-
 const Key=process.env.secretKey;
 
 
@@ -76,6 +75,26 @@ app.put("/updateUser/:id", async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 });
+
+
+app.post('/postrate', async (req, res) => {
+  try {
+    const { flavour, rate, Feedback } = req.body;
+    console.log('Received Rating:', { flavour, rate, Feedback });
+    res.status(200).json({ message: 'Rating submitted successfully' });
+  } catch (error) {
+    console.error('Error submitting rating:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+
+app.get('/getUserData/names', async (req, res) => {
+    const names = await userModel.distinct('name');
+    const unames = names.filter(username=>username)
+    res.json({ Names: unames });
+});
+
 
 
 
