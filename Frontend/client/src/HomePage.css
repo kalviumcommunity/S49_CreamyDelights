@@ -1,18 +1,16 @@
-/* HomePage.css */
-
 .home-page {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Full viewport height */
-    background-color: #fce8fc; /* Set background color */
-    font-family: Arial, sans-serif; /* Use a common font family */
+    height: 100vh;
+    background-color: #fce8fc; 
+    font-family: Arial, sans-serif; 
   }
   
   .home-page h1 {
     font-size: 3em;
-    color: #be7ec0; /* Set text color */
+    color: #be7ec0;
     margin-bottom: 20px;
   }
   

@@ -31,7 +31,7 @@ function Navbar({ cartItems, favoriteItems, removeFromCart }) {
           {/* Link to Rate component */}
           <Link to="/rate">
             <img
-              src="https://cdn-icons-png.flaticon.com/128/477/477406.png"
+              src="https://cdn-icons-png.flaticon.com/128/938/938063.png" // Updated source
               alt="rate_icon"
               className="icon"
             />
@@ -58,7 +58,6 @@ function Navbar({ cartItems, favoriteItems, removeFromCart }) {
           />
         </div>
       </div>
-      -
       {/* Render modal if isModalOpen is true */}
       {isModalOpen && <Modal closeModal={toggleModal} />}
     </nav>

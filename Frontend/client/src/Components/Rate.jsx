@@ -3,21 +3,8 @@ import './Rate.css'; // Import CSS file for styling
 
 function Rate() {
   const [rating, setRating] = useState(0);
-  const [hover, setHover] = useState(0);
   const [flavor, setFlavor] = useState('');
   const [feedback, setFeedback] = useState('');
-
-  const handleMouseOver = (index) => {
-    setHover(index);
-  };
-
-  const handleMouseLeave = () => {
-    setHover(0);
-  };
-
-  const handleClick = (index) => {
-    setRating(index);
-  };
 
   const handleFlavorChange = (event) => {
     setFlavor(event.target.value);
@@ -30,7 +17,7 @@ function Rate() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch('/postrate', {
+      const response = await fetch('http://localhost:8000/postrate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -38,7 +25,7 @@ function Rate() {
         body: JSON.stringify({
           flavour: flavor,
           rate: rating,
-          Feedback: feedback,
+          feedback: feedback, // Ensure this matches the field name in your schema
         }),
       });
       if (response.ok) {
@@ -62,28 +49,12 @@ function Rate() {
           <label htmlFor="flavor">Flavor:</label>
           <input type="text" id="flavor" value={flavor} onChange={handleFlavorChange} />
         </div>
-        <div className="rating-group">
-          {[...Array(5)].map((_, index) => {
-            const starId = index + 1;
-            return (
-              <span
-                key={index}
-                className={starId <= (hover || rating) ? 'star-filled' : 'star-empty'}
-                onMouseOver={() => handleMouseOver(starId)}
-                onMouseLeave={handleMouseLeave}
-                onClick={() => handleClick(starId)}
-              >
-                &#9733;
-              </span>
-            );
-          })}
-          <p>You rated: {rating}</p>
-        </div>
+     
         <div className="input-group">
-          <label htmlFor="feedback">Feedback:</label>
+          <label htmlFor="feedback">Description</label>
           <textarea id="feedback" value={feedback} onChange={handleFeedbackChange} />
         </div>
-        <button type="submit" className="submit-button">Submit</button>
+        <button type="submit" className="submit-button">Add Flavors</button>
       </form>
     </div>
   );

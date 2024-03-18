@@ -1,13 +1,19 @@
 const mongoose = require('mongoose');
 
-// Define the user schema
-const rateSchema = new mongoose.Schema({
-  flavour: String,
-  rate: String,
-  Feedback: String
+const ratingSchema = new mongoose.Schema({
+  flavour: {
+    type: String,
+    required: true
+  },
+  rate: {
+    type: Number,
+    required: true
+  },
+  feedback: {
+    type: String
+  }
 });
 
-// Create a model from the schema
-const RateModel = mongoose.model('Rate', rateSchema); 
+const Rating = mongoose.model('Rating', ratingSchema);
 
-module.exports = RateModel;
+module.exports = Rating;
